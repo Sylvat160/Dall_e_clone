@@ -16,6 +16,8 @@ const CreatePost = () => {
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = () => {}
+  const handleChange = (e) => {}
+  const handleSurpriseMe = () => {}
 
   return (
     <section className="max-w-7xl mx-auto ">
@@ -33,7 +35,21 @@ const CreatePost = () => {
         <div className='flex flex-col gap-5'>
           <FormField 
             labelName="Your name"
-            
+            name='name'
+            type='text'
+            placeholder='Enter your name'
+            value={form.name}
+            handleChange={handleChange}
+          />
+          <FormField 
+            labelName="Prompt"
+            name='prompt'
+            type='text'
+            placeholder='An astronaut sit on the moon eating fruits'
+            value={form.prompt}
+            handleChange={handleChange}
+            isSurpriseMe
+            handleSurpriseMe
           />
         </div>
       </form>
