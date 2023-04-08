@@ -17,8 +17,13 @@ const CreatePost = () => {
 
   const generateImage = () => {};
   const handleSubmit = () => {};
-  const handleChange = (e) => {};
-  const handleSurpriseMe = () => {};
+  const handleChange = (e) => {
+    setForm({...form, [e.target.name] : e.target.value})
+  };
+  const handleSurpriseMe = () => {
+    const randomPrompt = getRandomPrompt(form.prompt)
+    setForm({...form, prompt: randomPrompt})
+  };
 
   return (
     <section className="max-w-7xl mx-auto ">
@@ -48,7 +53,7 @@ const CreatePost = () => {
             value={form.prompt}
             handleChange={handleChange}
             isSurpriseMe
-            handleSurpriseMe
+            handleSurpriseMe={handleSurpriseMe}
           />
         </div>
         <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-2 w-64 p-3 h-64 flex justify-center items-center">
@@ -88,7 +93,10 @@ const CreatePost = () => {
             {" "}
             Once you've create the image, you can share it with the community
           </p>
-          <button type="submit" className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+          <button
+            type="submit"
+            className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
             {loading ? "Sharing ..." : "Share with the community"}
           </button>
         </div>
