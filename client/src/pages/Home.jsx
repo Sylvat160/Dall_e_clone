@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 
 import { Loader, Card, FormField } from "../components";
 
-const RenderCard = (data, title) => {
+const RenderCard = ({data, title}) => {
   if (data?.length > 0) {
-    return (data.map((post) => <Card key={post._id} {...post} />));
+    return data.map((post) => <Card key={post._id} {...post} />);
   }
 
   return (
-    <>
       <h2>
-        No results found for <span className="text-[#222328]"> {title} </span>
+        No results found for <span className="text-[#4d61c2]"> { title } </span>
       </h2>
-    </>
   );
 };
 
@@ -50,11 +48,11 @@ const Home = () => {
               </h2>
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
-              {/* {searchText ? (
+              {searchText != "" ? (
                 <RenderCard data={[]} title="No search result found" />
               ) : (
-                <RenderCard data={[]} title="No posts found" />
-              )} */}
+                <RenderCard data={[]} title="No post found" />
+              )}
             </div>
           </>
         )}
