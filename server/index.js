@@ -11,11 +11,15 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors(
+    // {
+    //     origin: 'http://localhost:5173',
+    // }
+));
 app.use(express.json({ limit: '50mb' }));
 
 app.use('/api/v1/posts', postRoutes);
-app.use('/api/v1/dall-e', dall_eRoutes);
+app.use('/api/v1/dalle', dall_eRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello from Dall-e!');
