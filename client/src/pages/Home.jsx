@@ -25,13 +25,13 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        "https://dalle-arbb.onrender.com/api/v1/post",
+        "http://localhost:3000/api/v1/posts",
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          mode: "no-cors"
+          mode: "no-cors",
         }
       );
 
@@ -40,7 +40,7 @@ const Home = () => {
         setAllPosts(result.data.reverse());
       }
     } catch (err) {
-      alert(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }
